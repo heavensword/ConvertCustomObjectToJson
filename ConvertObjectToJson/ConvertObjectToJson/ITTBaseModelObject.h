@@ -4,6 +4,9 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+/*!
+ *	The Super class of all custom model.All type of property must be NSObject type
+ */
 @interface ITTBaseModelObject :NSObject <NSCoding, NSCopying>
 {
 }
@@ -15,6 +18,6 @@
 - (NSString*)description;
 - (NSData*)getArchivedData;
 
-- (NSDictionary*)getPropertiesAndValues;
+- (NSDictionary*)propertiesAndValuesDic;
 
 @end

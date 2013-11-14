@@ -192,7 +192,6 @@
     NSMutableArray *propertyNames = [[NSMutableArray alloc] init];
     unsigned int propertyCount = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
-	
     for (unsigned int i = 0; i < propertyCount; ++i) {
         objc_property_t property = properties[i];
         const char * name = property_getName(property);
@@ -202,7 +201,7 @@
     return propertyNames;
 }
 
-- (NSDictionary*)getPropertiesAndValues
+- (NSDictionary*)propertiesAndValuesDic
 {
 	NSMutableDictionary *propertiesValuesDic = [NSMutableDictionary dictionary];
 	NSArray *properties = [self propertyNames];

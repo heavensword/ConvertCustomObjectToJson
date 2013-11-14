@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		50924BE418338C4600855DD3 /* ITTBaseModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 50924BE318338C4600855DD3 /* ITTBaseModelObject.m */; };
+		50B9F4B51834A60B00758A3B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B9F4B41834A60B00758A3B /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		50DF9FD4183478F6006C4E7A /* Credit.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DF9FD3183478F6006C4E7A /* Credit.m */; };
 		50DF9FDA18347A7B006C4E7A /* NSJSONSerialization+ITTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DF9FD918347A7B006C4E7A /* NSJSONSerialization+ITTAdditions.m */; };
-		50DF9FDD18347CAD006C4E7A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DF9FDC18347CAD006C4E7A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		50E7832F1831C257008E94EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E7832E1831C257008E94EF /* Foundation.framework */; };
 		50E783311831C257008E94EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E783301831C257008E94EF /* CoreGraphics.framework */; };
 		50E783331831C257008E94EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E783321831C257008E94EF /* UIKit.framework */; };
@@ -41,12 +41,12 @@
 /* Begin PBXFileReference section */
 		50924BE218338C4600855DD3 /* ITTBaseModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTBaseModelObject.h; sourceTree = "<group>"; };
 		50924BE318338C4600855DD3 /* ITTBaseModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTBaseModelObject.m; sourceTree = "<group>"; };
+		50B9F4B31834A60B00758A3B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		50B9F4B41834A60B00758A3B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		50DF9FD2183478F6006C4E7A /* Credit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credit.h; sourceTree = "<group>"; };
 		50DF9FD3183478F6006C4E7A /* Credit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Credit.m; sourceTree = "<group>"; };
 		50DF9FD818347A7B006C4E7A /* NSJSONSerialization+ITTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+ITTAdditions.h"; sourceTree = "<group>"; };
 		50DF9FD918347A7B006C4E7A /* NSJSONSerialization+ITTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+ITTAdditions.m"; sourceTree = "<group>"; };
-		50DF9FDB18347CAD006C4E7A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		50DF9FDC18347CAD006C4E7A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		50E7832B1831C257008E94EF /* ConvertObjectToJson.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConvertObjectToJson.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E7832E1831C257008E94EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50E783301831C257008E94EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,8 +127,8 @@
 		50E783341831C257008E94EF /* ConvertObjectToJson */ = {
 			isa = PBXGroup;
 			children = (
-				50DF9FDB18347CAD006C4E7A /* JSONKit.h */,
-				50DF9FDC18347CAD006C4E7A /* JSONKit.m */,
+				50B9F4B31834A60B00758A3B /* JSONKit.h */,
+				50B9F4B41834A60B00758A3B /* JSONKit.m */,
 				50924BE218338C4600855DD3 /* ITTBaseModelObject.h */,
 				50924BE318338C4600855DD3 /* ITTBaseModelObject.m */,
 				50E7833D1831C257008E94EF /* AppDelegate.h */,
@@ -280,7 +280,7 @@
 				50E783451831C257008E94EF /* ViewController.m in Sources */,
 				50DF9FDA18347A7B006C4E7A /* NSJSONSerialization+ITTAdditions.m in Sources */,
 				50E7833F1831C257008E94EF /* AppDelegate.m in Sources */,
-				50DF9FDD18347CAD006C4E7A /* JSONKit.m in Sources */,
+				50B9F4B51834A60B00758A3B /* JSONKit.m in Sources */,
 				50E7833B1831C257008E94EF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

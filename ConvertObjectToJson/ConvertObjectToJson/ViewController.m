@@ -10,6 +10,7 @@
 #import "User.h"
 #import "Credit.h"
 #import "JSONKit.h"
+#import "NSJSONSerialization+ITTAdditions.h"
 
 @interface ViewController ()
 
@@ -17,77 +18,7 @@
 
 @implementation ViewController
 
-- (NSString*)jsonStringFromArray:(NSArray*)array
-{
-	NSMutableString *jsonString = [NSMutableString string];
-	[self serializeArray:array jsonString:jsonString];
-	if ([jsonString length]) {
-		[jsonString deleteCharactersInRange:NSMakeRange([jsonString length] - 1, 1)];
-	}
-	return jsonString;
-}
 
-- (NSString*)jsonStringFromDictionary:(NSDictionary*)dictionary
-{
-	NSMutableString *jsonString = [NSMutableString string];
-	[self serializeDictionary:dictionary jsonString:jsonString];
-	if ([jsonString length]) {
-		[jsonString deleteCharactersInRange:NSMakeRange([jsonString length] - 1, 1)];
-	}
-	return jsonString;
-}
-
-- (void)serializeArray:(NSArray*)array jsonString:(NSMutableString*)string
-{
-	[string appendString:@"["];
-	NSInteger count = 0;
-	for (id object in array) {
-		if ([object isKindOfClass:[ITTBaseModelObject class]]) {
-			NSDictionary *propertiesValuesDic = [object getPropertiesAndValues];
-			[self serializeDictionary:propertiesValuesDic jsonString:string];
-		}
-		else if ([object isKindOfClass:[NSDictionary class]]){
-			[self serializeDictionary:object jsonString:string];
-		}
-		else if([object isKindOfClass:[NSArray class]]) {
-			[self serializeArray:object jsonString:string];
-		}
-		else {
-			[string appendFormat:@"\"%@\",", object];
-		}
-		count++;
-	}
-	[string deleteCharactersInRange:NSMakeRange([string length] - 1, 1)];
-	[string appendString:@"]"];
-	[string appendString:@","];
-}
-
-- (void)serializeDictionary:(NSDictionary*)dictionary jsonString:(NSMutableString*)string
-{
-	[string appendString:@"{"];
-	NSArray *allKeys = [dictionary allKeys];
-	for (NSString *key in allKeys) {
-		id value = dictionary[key];
-		if ([value isKindOfClass:[ITTBaseModelObject class]]) {
-			[string appendFormat:@"\"%@\":", key];
-			[self serializeDictionary:[value getPropertiesAndValues] jsonString:string];
-		}
-		else if ([value isKindOfClass:[NSArray class]]) {
-			[string appendFormat:@"\"%@\":", key];
-			[self serializeArray:value jsonString:string];
-		}
-		else if ([value isKindOfClass:[NSDictionary class]]) {
-			[string appendFormat:@"\"%@\":", key];
-			[self serializeDictionary:value jsonString:string];
-		}
-		else {
-			[string appendFormat:@"\"%@\":\"%@\",", key, [value description]];
-		}
-	}
-   [string deleteCharactersInRange:NSMakeRange([string length] - 1, 1)];
-	[string appendString:@"}"];
-	[string appendString:@","];
-}
 
 - (void)viewDidLoad
 {
@@ -96,7 +27,7 @@
 	user.userName = @"hello world!";
 	user.password = @"password";
 	user.age = @"10";
-	NSLog(@"property names and value dic %@", [user getPropertiesAndValues]);
+//	NSLog(@"property names and value dic %@", [user propertiesAndValuesDic]);
 	
 	NSMutableArray *objects = [NSMutableArray array];
 	NSMutableArray *compareObjects = [NSMutableArray array];
@@ -122,12 +53,12 @@
 	NSLog(@"begin of custom json serialize");
 	NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
 	for (NSInteger i = 0; i < 10; i++) {
-		[self jsonStringFromArray:objects];
+		[NSJSONSerialization jsonStringFromArray:objects];
 	}
 	interval = [[NSDate date] timeIntervalSince1970] - interval;
 	NSLog(@"end of custom json serialize");
 	NSLog(@"time escape of custom %lf seconds", interval);
-	
+	NSLog(@"%@", [NSJSONSerialization jsonStringFromArray:objects]);
 	NSLog(@"begin of JSONKit json serialize");
    interval = [[NSDate date] timeIntervalSince1970];
 	for (NSInteger i = 0; i < 10; i++) {
@@ -137,10 +68,13 @@
 	NSLog(@"end of JSONKit json serialize");
 	NSLog(@"time escape of JSONKIt %lf seconds", interval);
 	
-//	NSLog(@"-------------------------------------------------\n");
-//	[self jsonStringFromDictionary:@{@"balance":@{@"user":user, @"level":@"10"}}];
-//	NSLog(@"-------------------------------------------------\n");
-//	[self jsonStringFromDictionary:@{@"array":@[@"1", @"2"]}];
+	NSLog(@"-------------------------------------------------\n");
+	NSLog(@"%@", [NSJSONSerialization jsonStringFromDictionary:@{@"balance":@{@"user":user, @"level":@"10"}}]);
+	NSLog(@"-------------------------------------------------\n");
+	NSLog(@"%@", [NSJSONSerialization jsonStringFromDictionary:@{@"array":@[@"1", @"2"]}]);
+	NSLog(@"%@", [NSJSONSerialization jsonStringFromDictionary:@{@"test":@"admin"}]);
+	NSLog(@"-------------------------------------------------\n");
+	NSLog(@"%@", [NSJSONSerialization jsonStringFromDictionary:@{@"array":@[@"1", @"2"]}]);	
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
